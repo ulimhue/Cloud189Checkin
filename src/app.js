@@ -11,6 +11,8 @@ const push = require("./push");
 const { log4js, cleanLogs, catLogs } = require("./logger");
 const tokenDir = ".token";
 
+let hasError = false;
+
 sdkLogger.configure({
   isDebugEnabled: process.env.CLOUD189_VERBOSE === "1",
 });
@@ -40,6 +42,7 @@ const run = async (userName, password, userSizeInfoMap, logger) => {
       });
       await Promise.all([doUserTask(cloudClient, logger)]);
     } catch (e) {
+      hasError = true;
       if (e.response) {
         logger.log(`请求失败: ${e.response.statusCode}, ${e.response.body}`);
       } else {
@@ -112,7 +115,9 @@ async function main() {
     const logs = catLogs();
     const events = recording.replay();
     const content = events.map((e) => `${e.data.join("")}`).join("  \n");
-    push("天翼云盘自动签到任务", logs + content);
+    if (hasError) {
+      push("天翼云盘自动签到任务", logs + content);
+    }
     recording.erase();
     cleanLogs();
   }
