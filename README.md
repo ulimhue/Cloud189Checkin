@@ -91,7 +91,17 @@
 - Bark 官网：https://bark.day.app/
 - 安装 Bark app，开启通知权限，拿到 key 后，把 BARK_KEY 配成你拿到的 key
 - `可选` 支持自定义 server, 配置成 BARK_SERVER ，默认为官方通道 https://api.day.app
-- 免费、开源、轻量；使用苹果 APNS 服务，及时、稳定、可靠；不会消耗设备的电量，基于系统推送服务与推送扩展，app 本体并不需要运行；隐私安全，可以通过一些方式确保包含作者本人在内的所有人都无法窃取你的隐私
+- 免费、开源、轻量；使用苹果 APNS 服务，及时、稳定、可靠；不会消耗设备的电量，基于系统推送服务与推送扩展，app 本体并不需要运行；隐私安全，可以通过一些方式确保包含作者本人在内的任何人都无法窃取你的隐私
+
+### 邮件推送 (Email)
+
+- `EMAIL_SMTP_HOST ` _SMTP 服务器地址（如 smtp.qq.com）_
+- `EMAIL_SMTP_PORT ` _SMTP 端口，默认 465_
+- `EMAIL_SMTP_SECURE ` _是否使用 SSL，默认 true_
+- `EMAIL_USER ` _SMTP 登录邮箱_
+- `EMAIL_PASS ` _SMTP 授权码（非登录密码）_
+- `EMAIL_TO ` _收件邮箱地址_
+- `EMAIL_FROM ` _发件人地址，可选，默认同 EMAIL_USER_
 
 ### 执行任务
 
