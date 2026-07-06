@@ -7,6 +7,7 @@ const wxpush = require("./wxPusher");
 const pushPlus = require("./pushPlus");
 const bark = require("./bark");
 const showDoc = require("./showDoc");
+const emailPusher = require("./emailPusher");
 
 const logger = log4js.getLogger("push");
 logger.addContext("user", "push");
@@ -188,6 +189,7 @@ const push = (title, desp) => {
   pushPlusPusher(title, desp);
   pushBark(title, desp);
   pushShowDoc(title, desp);
+  emailPusher(title, desp);
 };
 
 module.exports = push;
